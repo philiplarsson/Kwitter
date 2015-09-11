@@ -2,7 +2,6 @@
 
 require "kwitter.php";
 
-
 view("index");
 
 
