@@ -16,5 +16,10 @@
       <input class="login_button" name="" type="reset" value="Reset"/>
     </li>
   </ul>
-  
+
+  <?php if ( isset($status) ) : ?>
+    <div class="status-message">
+      <?= $status ;?>
+    </div>
+  <?php endif ?>
 </form>
