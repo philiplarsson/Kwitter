@@ -11,6 +11,7 @@
  */
 function view($path)
 {
+    global $my_title;
     $path =  $path . ".view.php";
     include "views/layout.php";
 }
