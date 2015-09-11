@@ -1,3 +1,25 @@
 h1 {
     color: red;
 }
+
+/* 
+   #------------------------------------------------------------------ 
+   # Form Styling 
+   #------------------------------------------------------------------ 
+ */
+form ul {
+    list-style: none;
+}
+
+form ul li {
+    margin-bottom: 10px;
+}
+
+.login_button {
+  border-radius: 4px;
+  border: 1px solid #999;
+  width: 70px;
+  height: 24px;
+}
+
+
