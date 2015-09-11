@@ -24,4 +24,18 @@ form ul li {
 
 
 
+/* 
+   #------------------------------------------------------------------ 
+   # Status messages 
+   #------------------------------------------------------------------ 
+ */
+.status-message {
+  border: 1px solid;
+  margin: 10px 5px;
+  padding: 10px;
+  background-color: #FFF8DC;
+  width: 250px;
+  text-align: center;
+    
+}
 
