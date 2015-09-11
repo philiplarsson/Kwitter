@@ -4,11 +4,11 @@
   <ul>
     <li>
       <label for="username">Username: </label>
-      <input name="email" type="text"/>
+      <input name="username" type="text"/>
     </li>
     <li>
-      <label for="email">Email: </label>
-      <input name="email" type="text"/>
+      <label for="password">Password: </label>
+      <input name="password" type="password"/>
     </li>
     
     <li>
