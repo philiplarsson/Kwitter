@@ -1,5 +1,3 @@
-
-
 <?php
 /**
 * Requiring files and connect to db.
