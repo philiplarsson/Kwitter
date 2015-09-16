@@ -27,6 +27,7 @@
 
     <?php if ( isset($status)) : ?>
         <div class="status-message">
-            <?= $status; ?>
+          <?= $status; ?>
+        </div>
     <?php endif ?>
 </form>
