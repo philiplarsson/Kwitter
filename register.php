@@ -19,17 +19,7 @@ if ( $_SERVER["REQUEST_METHOD"] == "POST") {
         $status = "Please enter a correct email.";
     } else {
         // Register user
-        $result = $db->createUser($username, $email, $password, $name);
-        if ($result) {
-            $status = "You have been registered.";
-            // Send to user page.
-        } else {
-            // User was not created.
-            if ($db->getMessage()[1] == 1062) {
-                // Duplicate entry/entries.
-                $status = "User already exists";
-            }
-        }   
+        $status = registerUser($username, $email, $password, $name, $db);
     }
 }
 

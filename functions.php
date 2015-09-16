@@ -1,8 +1,10 @@
 <?php
 /**
-* Functions not related to db.
-*
-*/
+ * Functions not related to db.
+ *
+ */
+
+
 
 /* 
    #------------------------------------------------------------------ 
@@ -32,5 +34,29 @@ function validEmail($email)
 {
     return filter_var( $email, FILTER_VALIDATE_EMAIL );
 }
+
+
+/* 
+   #------------------------------------------------------------------ 
+   # Register user in specified db.
+   # Returns status message.
+   #------------------------------------------------------------------ 
+ */
+function registerUser($username, $email, $password, $name, $db)
+{
+        $result = $db->createUser($username, $email, $password, $name);
+        if ($result) {
+            $status = "You have been registered.";
+            // Send to user page.
+        } else {
+            // User was not created.
+            if ($db->getMessage()[1] == 1062) {
+                // Duplicate entry/entries.
+                $status = "User already exists";
+            }
+        }
+    return $status;
+}
+
 
 ?>
