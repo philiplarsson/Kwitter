@@ -21,4 +21,16 @@ function view($path, $data = null)
     include "views/layout.php";
 }
 
+
+
+/*
+   #------------------------------------------------------------------
+   # Checks if email is valid
+   #------------------------------------------------------------------
+ */
+function validEmail($email)
+{
+    return filter_var( $email, FILTER_VALIDATE_EMAIL );
+}
+
 ?>

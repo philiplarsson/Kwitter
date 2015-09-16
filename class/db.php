@@ -3,7 +3,7 @@
 class Database
 {
     private $conn;
-    private $status;
+    private $status_message;
     
     public function __construct($config)
     {
@@ -71,11 +71,11 @@ class Database
             $stmt = $this->conn->prepare($query);
 
             $result = $stmt->execute($bindings);
-            $this->status = $stmt->errorInfo();
+            $this->status_message = $stmt->errorInfo();
 
             return $result;
         } catch (Exception $e) {
-            $this->status = $stmt->errorInfo();
+            $this->status_message = $stmt->errorInfo();
             return false;
         }
     }
@@ -120,8 +120,8 @@ VALUES(:username, :email, :password, :name)";
      */
     public function getStatus()
     {
-        return (isset($status))
-            ? $status
+        return (isset($this->status_message))
+            ? $this->status_message
             : null;
     }
     

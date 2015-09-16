@@ -1,4 +1,12 @@
 <?php
+/**
+ * Helper functions.
+ *
+ * All functions that helps the view to display its data should 
+ * be in this file. 
+ * These functions should be somewhat common across the application.
+ */
+
 
 /*
    #------------------------------------------------------------------
@@ -14,17 +22,6 @@ function get_title($title = "")
     } else {
         return $base_title . " | " . $title;
     }
-}
-
-
-/*
-   #------------------------------------------------------------------
-   # Checks if email is valid
-   #------------------------------------------------------------------
- */
-function valid_email($email)
-{
-    return filter_var( $email, FILTER_VALIDATE_EMAIL );
 }
 
 
