@@ -46,6 +46,7 @@ class Database
        # the parameters. 
        # Returns an associative array.
        # Returns false if there was no data returned.
+       # Saves status in status variable.
        #------------------------------------------------------------------ 
      */
     public function query_db($query, $bindings)
@@ -54,6 +55,7 @@ class Database
         $stmt->execute($bindings);
 
         $results = $stmt->fetchAll();
+        $this->status_message = $stmt->errorInfo();
 
         return $results ? $results : false;
     }
@@ -93,6 +95,18 @@ class Database
         return $user[0];
     }
 
+    /* 
+       #------------------------------------------------------------------ 
+       # Returns user with specified username.
+       # Returns false if no user with $username was found.
+       #------------------------------------------------------------------ 
+     */
+    public function getUserByUsername($username)
+    {
+        $bindings = array("username" => $username);
+        $user = $this->query_db("SELECT * FROM users WHERE username = :username", $bindings);
+        return $user[0];
+    }
     /* 
        #------------------------------------------------------------------ 
        # Creates user with specified information.
