@@ -13,20 +13,13 @@ if ( $_SERVER["REQUEST_METHOD"] == "POST") {
         $status = "Missing email or username.";
     } else {
         // log in user
-        $user = $db->getUserByUsername($username);
-        if ($user) {
-            // User exists
-            $user_password = $user["password"];
-            if (strcmp($user_password, $password) == 0) {
-                // Login correct. Send to user page.
-                $status = "Login correct. Welcome $username!";
-            } else {
-                $status = "Wrong password. Try again";
-            }
-            
+        if (authenticateUser($username, $password, $db)) {
+             // Login correct. Send to user page.
+            $status = "Login correct. Welcome $username!";
         } else {
-            $status = "User doesn't exist. Enter another username.";
+            $status = "Wrong credentials. Please try again.";
         }
+            
     }
 }
 

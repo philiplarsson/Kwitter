@@ -44,19 +44,45 @@ function validEmail($email)
  */
 function registerUser($username, $email, $password, $name, $db)
 {
-        $result = $db->createUser($username, $email, $password, $name);
-        if ($result) {
-            $status = "You have been registered.";
-            // Send to user page.
-        } else {
-            // User was not created.
-            if ($db->getMessage()[1] == 1062) {
-                // Duplicate entry/entries.
-                $status = "User already exists";
-            }
+    $result = $db->createUser($username, $email, $password, $name);
+    if ($result) {
+        $status = "You have been registered.";
+        // Send to user page.
+    } else {
+        // User was not created.
+        if ($db->getMessage()[1] == 1062) {
+            // Duplicate entry/entries.
+            $status = "User already exists";
         }
+    }
     return $status;
 }
+
+/* 
+   #------------------------------------------------------------------ 
+   # Controlls the specified credentials with the db. 
+   #------------------------------------------------------------------ 
+ */
+function authenticateUser($username, $password, $db)
+{
+    $user = $db->getUserByUsername($username);
+    if ($user) {
+        // User exists
+        $user_password = $user["password"];
+        if (strcmp($user_password, $password) == 0) {
+            // Login correct
+            return true;
+        } else {
+            // Wrong password
+            return false;
+        }
+    } else {
+        // User doesn't exist
+        return false;
+    }
+
+}
+
 
 
 ?>
