@@ -40,6 +40,8 @@ function validEmail($email)
    #------------------------------------------------------------------ 
    # Register user in specified db.
    # Returns status message.
+   # NOTE: This function won't hash password. Expects password to 
+   # already be hashed.
    #------------------------------------------------------------------ 
  */
 function registerUser($username, $email, $password, $name, $db)
@@ -61,6 +63,8 @@ function registerUser($username, $email, $password, $name, $db)
 /* 
    #------------------------------------------------------------------ 
    # Controlls the specified credentials with the db. 
+   # The specified password is hashed and checked against stored 
+   # password (via password_verify()).
    #------------------------------------------------------------------ 
  */
 function authenticateUser($username, $password, $db)
@@ -68,8 +72,7 @@ function authenticateUser($username, $password, $db)
     $user = $db->getUserByUsername($username);
     if ($user) {
         // User exists
-        $user_password = $user["password"];
-        if (strcmp($user_password, $password) == 0) {
+        if (password_verify($password, $user["password"]))  {
             // Login correct
             return true;
         } else {
@@ -80,7 +83,6 @@ function authenticateUser($username, $password, $db)
         // User doesn't exist
         return false;
     }
-
 }
 
 
