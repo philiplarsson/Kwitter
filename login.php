@@ -1,6 +1,7 @@
 <?php
 
 require "kwitter.php";
+session_start();
 
 $db = new Database($config);
 
@@ -14,8 +15,9 @@ if ( $_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         // log in user
         if (authenticateUser($username, $password, $db)) {
-             // Login correct. Send to user page.
-            $status = "Login correct. Welcome $username!";
+            // Login correct. Send to user page.
+            $_SESSION["username"] = $username;
+            header("Location: user.php");
         } else {
             $status = "Wrong credentials. Please try again.";
         }
