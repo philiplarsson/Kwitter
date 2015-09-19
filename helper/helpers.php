@@ -24,5 +24,21 @@ function get_title($title = "")
     }
 }
 
+/*
+   #------------------------------------------------------------------
+   # Returns link to user image from gravatar
+   #------------------------------------------------------------------
+ */
+function getGravatarImage($email)
+{
+    $gravatar_base_url = "http://www.gravatar.com/avatar/";
+    $email = trim($email);
+    $email = strtolower($email);
+    $email_md5 = md5($email);
+    $grav_url = $gravatar_base_url . $email_md5;
+    return $grav_url;
+}
+
+
 
 ?>
