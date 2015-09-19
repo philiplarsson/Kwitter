@@ -1,7 +1,12 @@
-<?php
 
 
+<h1><?= $name; ?></h1>
+<div class="user-information">
+    <ul>
+        <li><p><?= $email; ?></p></li>
+        <li><p><?= $username; ?></p></li>    
+    </ul>
+</div>
 
-?>
-<h1>Im on user page</h1>
 <a href='logout.php'>logout</a>
+

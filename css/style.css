@@ -1,6 +1,33 @@
 h1 {
-    color: red;
+    color: black;
 }
+
+body {
+    font-family: ‘Lucida Sans Unicode’, ‘Lucida Grande’, sans-serif;
+}
+
+/* 
+   #------------------------------------------------------------------ 
+   # User Page 
+   #------------------------------------------------------------------ 
+ */
+
+.user-information{
+    font-size: 18px;
+    font-family: ‘Lucida Console’, Monaco, monospace;
+    
+}
+
+.user-information ul {
+    list-style: none;
+}
+
+.user-information p{
+    margin: 0px;
+    padding-bottom: 3px;
+}
+
+
 
 /* 
    #------------------------------------------------------------------ 
@@ -21,7 +48,6 @@ form ul li {
   width: 70px;
   height: 24px;
 }
-
 
 
 /* 
