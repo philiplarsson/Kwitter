@@ -1,6 +1,7 @@
 <?php
 
 require "kwitter.php";
+session_start();
 
 $db = new Database($config);
 

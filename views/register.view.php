@@ -1,6 +1,6 @@
 <h1>This is a registration site.</h1>
 
-<form action="" method="post">
+<form class="form-fade" action="" method="post">
     <ul>
         <li>
             <label for="username">Username: </label>
@@ -20,8 +20,8 @@
         </li>
 
         <li>
-            <input name="" type="submit" value="Register"/>
-            <input name="" type="reset" value="Reset"/>
+            <input class="login_button" name="" type="submit" value="Register"/>
+            <input class="login_button" name="" type="reset" value="Reset"/>
         </li
     </ul>
 
