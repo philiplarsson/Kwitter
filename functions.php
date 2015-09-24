@@ -11,16 +11,19 @@
    # Include view from path.
    # If data is included, that will be extracted:
    # extract(array("color" => "blue")) => $color = blue
+   # If second parameter is false, data wont be extracted.
+   # By not extracting data, the specified data will just be passed
+   # allong to the view.
    #------------------------------------------------------------------ 
  */
-function view($path, $data = null)
+function view($path, $data = null, $extract_data = true)
 {
-    if ( $data ) {
-        extract($data);
+    if ( $data  && $extract_data ) {
+        extract($data); 
     }
     global $my_title;
     $path =  $path . ".view.php";
-    include "views/layout.php";
+    require "views/layout.php";
 }
 
 /*

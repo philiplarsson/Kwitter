@@ -60,6 +60,28 @@ class Database
         return $results ? $results : false;
     }
 
+    
+    /*
+       #------------------------------------------------------------------
+       # Runs a query in the database.
+       # Note that $query needs to be "safe", so need to be escaped
+       # if it is raw user input. In general, only use this method for 
+       # hardcoded queries. 
+       # Returns false if there was no data returned. 
+       #------------------------------------------------------------------
+     */ 
+    public function unsafe_query($query)
+    {
+        try {
+            $pdostmt = $this->conn->query($query);
+            $result = $pdostmt->fetchAll();
+            
+            return $result ? $result : false;
+        } catch (Exception $e) {
+            return false;
+        }
+    }
+
     /* 
        #------------------------------------------------------------------ 
        # Runs a prepared statement with specified bindings.
@@ -85,6 +107,7 @@ class Database
     /* 
        #------------------------------------------------------------------ 
        # Returns user with specified email.
+       # Returns only 1, since email is unique.
        # Returns false if no email was found.
        #------------------------------------------------------------------ 
      */
@@ -98,6 +121,7 @@ class Database
     /* 
        #------------------------------------------------------------------ 
        # Returns user with specified username.
+       # Returns only 1, since username is unique.
        # Returns false if no user with $username was found.
        #------------------------------------------------------------------ 
      */
@@ -107,6 +131,21 @@ class Database
         $user = $this->query_db("SELECT * FROM users WHERE username = :username", $bindings);
         return $user[0];
     }
+
+    /* 
+       #------------------------------------------------------------------ 
+       # Returns the user with the specified id.
+       # Returns only 1, since id is unique.
+       # Returns false if no user with $id was found.
+       #------------------------------------------------------------------ 
+     */
+    public function getUserById($id)
+    {
+        $bindings = array("id" => $id);
+        $user = $this->query_db("SELECT * FROM users WHERE id = :id", $bindings);
+        return $user[0];
+    }
+    
     /* 
        #------------------------------------------------------------------ 
        # Creates user with specified information.
@@ -138,11 +177,35 @@ VALUES(:username, :email, :password, :name)";
             ? $this->status_message
             : null;
     }
-    
+    /* 
+       #------------------------------------------------------------------ 
+       # Returns specified amount of posts (kweets)
+       # Returns in descending order, since newest tweet probably wants
+       # to be displayed first.
+       # If no amount is specified, 10 is returned
+       #------------------------------------------------------------------ 
+     */
+    public function getKweets($max_value = 10)
+    {
+        $kweets = $this->unsafe_query("SELECT * FROM posts ORDER BY id DESC");
+        if (count($kweets) > $max_value) {
+            return array_slice($kweets, 0, 10);
+        } else {
+            return $kweets;
+        }
+    }
 }
 
 // --------------- TESTING BELOW: ----------------- //
-/* 
+
+/*$config = array(
+   /*"username" => "root",
+   /*"password" => ""
+   /*);
+   /*$db = new Database($config);
+   /*$db->getKweets();
+
+   /* 
    $config = array(
    "username" => "root",
    "password" => ""

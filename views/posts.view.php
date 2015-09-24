@@ -1,8 +1,19 @@
-<h1>Welcome to Kwitter</h1>
-
-<h2>Posts / Kweets</h2>
+<h2>Kweets</h2>
 <p>
-  Ut ornare lectus sit amet est placerat in egestas erat imperdiet sed euismod nisi porta lorem mollis aliquam ut porttitor leo a diam sollicitudin tempor. Ut ornare lectus sit amet!
+    Here you can see all the kweets.
 </p>
-     
+<?php if (!$data): ?>
+    <!-- There are no tweets -->
+    <p>There are no kweets at this time...</p>
+
+<?php else: ?>
+    <?php foreach ($data as $kweet) : ?>
+        <?php extract($kweet); ?>
+        <div class="kweet">
+            <p class="author"><?= $username; ?></p>
+            <p class="content"><?= $content; ?></p>
+        </div>
+    <?php endforeach; ?>
+
+<?php endif; ?>
 
