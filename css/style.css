@@ -101,13 +101,26 @@ nav a {
    #------------------------------------------------------------------ 
  */
 
-.user-information {
-    font-size: 18px;
-    font-family: ‘Lucida Console’, Monaco, monospace;    
+.user-page-container:after {
+    content:"";
+    display:table;
+    clear:both;
 }
 
+.user-information {
+    font-size: 18px;
+    font-family: ‘Lucida Console’, Monaco, monospace;
+    width: 40%;
+}
+
+.user-menu {
+    padding: 30px 0 0 0;
+}
 .user-information ul {
     list-style: none;
+    float: left;
+    width: 30%;
+    padding: 0;
 }
 
 .user-information p {
@@ -117,16 +130,35 @@ nav a {
 
 .user-information img {
     float: left;
-    padding: 0 10px;
+    padding: 6px 10px;
+    width: 30%;
+}
+
+.new-kweet {
+    float: right;
+    width: 40%;
+}
+
+.new-kweet textarea{
+    width: 95%;
+    height: 60px;
 }
 
 
-/* 
+.new-kweet p {
+    margin: 0;
+}
+
+.new-kweet input[type=submit] {
+    float: right;
+    margin-right: 6px;
+}
+
+/*
    #------------------------------------------------------------------ 
    # Form Styling 
    #------------------------------------------------------------------ 
- */
-
+*/
 
 form ul {
     list-style: none;
@@ -185,22 +217,6 @@ input[type=text], input[type=password] {
     text-align: center;
 }
 
-.styled-button {
-	-webkit-box-shadow:rgba(0,0,0,0.98) 0 1px 0 0;
-	-moz-box-shadow:rgba(0,0,0,0.98) 0 1px 0 0;
-	box-shadow:rgba(0,0,0,0.98) 0 1px 0 0;
-	background-color:#EEE;
-	border-radius:3;
-	-webkit-border-radius:0;
-	-moz-border-radius:0;
-	border:1px solid #999;
-	color:#666;
-	font-family:'Lucida Grande',Tahoma,Verdana,Arial,Sans-serif;
-	font-size:0.8em;
-	padding:4px 8px;
-    text-decoration: none;
-}
-
 /* 
    #------------------------------------------------------------------ 
    # Kweets specific
@@ -225,3 +241,25 @@ input[type=text], input[type=password] {
     margin: 0;
 }
 
+
+/* 
+   #------------------------------------------------------------------ 
+   # Buttons 
+   #------------------------------------------------------------------ 
+*/
+
+.styled-button {
+	-webkit-box-shadow:rgba(0,0,0,0.98) 0 1px 0 0;
+	-moz-box-shadow:rgba(0,0,0,0.98) 0 1px 0 0;
+	box-shadow:rgba(0,0,0,0.98) 0 1px 0 0;
+	background-color:#EEE;
+	border-radius:3;
+	-webkit-border-radius:0;
+	-moz-border-radius:0;
+	border:1px solid #999;
+	color:#666;
+	font-family:'Lucida Grande',Tahoma,Verdana,Arial,Sans-serif;
+	font-size:0.8em;
+	padding:4px 8px;
+    text-decoration: none;
+}
