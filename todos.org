@@ -1,9 +1,15 @@
 * List of todos
 
-Mark as done with C+c C+c
-** user.php page [0/2]
-   - [ ] Make tweet work
+
+** user.php page [1/2]
+   - [X] Make tweet work
    - [ ] Add change password
+
+* How to use todo list...
+
+** Mark as done with C+c C+c
+   - [ ] This for example
+   - use / or % in brackets[] in header to display 1/2 or percentage.
 
 ** TODO Change password
 (C+c C+t to cycle todo)

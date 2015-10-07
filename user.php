@@ -18,6 +18,16 @@ if ( isset( $_SESSION["username"] ) ) {
     header("Location: login.php");
 }
 
+if ( $_SERVER["REQUEST_METHOD"] == "POST") {
+    // Escaping out all html-entities
+    $kweet = htmlspecialchars($_POST["kweet"]);
+    if ( isset($username) ) {
+        $user = $db->getUserByUsername($username);
+        $user_id = $user["id"];
+        $result = $db->createKweet($kweet, $user_id);
+    }
+}
+
 
 
 if (isset($user_array)) {

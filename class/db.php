@@ -46,7 +46,8 @@ class Database
        # the parameters. 
        # Returns an associative array.
        # Returns false if there was no data returned.
-       # Saves status in status variable.
+       # If this method return false, then the query failed. Check status
+       # message with getStatus() to get error message.
        #------------------------------------------------------------------ 
      */
     public function query_db($query, $bindings)
@@ -86,7 +87,8 @@ class Database
        #------------------------------------------------------------------ 
        # Runs a prepared statement with specified bindings.
        # Returns true if successfull or false on failure.
-       # Saves status in status variable.
+       # If this method return false, then the query failed. Check status
+       # message with getStatus() to get error message.
        #------------------------------------------------------------------ 
      */
     public function insertQuery($query, $bindings)
@@ -162,6 +164,22 @@ class Database
         );
         $query_string = "INSERT INTO users (username, email, password, name) 
 VALUES(:username, :email, :password, :name)";
+        $result = $this->insertQuery($query_string, $bindings);
+        return $result;
+    }
+
+    /* 
+       #------------------------------------------------------------------ 
+       # Create a new kweet  
+       #------------------------------------------------------------------ 
+     */
+    public function createKweet($kweet, $user)
+    {
+        $bindings = array(
+            "kweet" => $kweet,
+            "user" => $user
+        );
+        $query_string = "INSERT INTO posts (content, user_id) VALUES(:kweet, :user)";
         $result = $this->insertQuery($query_string, $bindings);
         return $result;
     }
