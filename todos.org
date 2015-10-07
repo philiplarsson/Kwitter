@@ -1,5 +1,8 @@
-* List of todos
+* List of todos 
 
+
+** header [0/1]
+   - [ ] Hide register and login when user is logged in
 
 ** user.php page [1/2]
    - [X] Make tweet work
