@@ -1,0 +1,9 @@
+* List of todos
+
+Mark as done with C+c C+c
+** user.php page [0/2]
+   - [ ] Make tweet work
+   - [ ] Add change password
+
+** TODO Change password
+(C+c C+t to cycle todo)
