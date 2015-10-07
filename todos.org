@@ -8,6 +8,9 @@
    - [X] Make tweet work
    - [ ] Add change password
 
+** posts.php [0/1]
+   - [ ] Make names link to a user page which will show all kweets and username
+
 * How to use todo list...
 
 ** Mark as done with C+c C+c
