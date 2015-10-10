@@ -8,8 +8,11 @@
    - [X] Make tweet work
    - [ ] Add change password
 
-** posts.php [0/1]
-   - [ ] Make names link to a user page which will show all kweets and username
+** posts.php [1/1]
+   - [X] Make names link to a user page which will show all kweets and username
+** profile.php [0/1]
+   - [ ] Make the profile display a search bar to search for user if
+     no user was entered as a get request
 
 * How to use todo list...
 

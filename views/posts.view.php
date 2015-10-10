@@ -10,7 +10,8 @@
     <?php foreach ($data as $kweet) : ?>
         <?php extract($kweet); ?>
         <div class="kweet">
-            <p class="author"><?= $username; ?></p>
+            <a href="profile.php?<?= 'username=' . $username; ?>">
+                <p class="author"><?= $username; ?></p></a>
             <p class="content"><?= $content; ?></p>
         </div>
     <?php endforeach; ?>

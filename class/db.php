@@ -52,13 +52,19 @@ class Database
      */
     public function query_db($query, $bindings)
     {
-        $stmt = $this->conn->prepare($query);
-        $stmt->execute($bindings);
+        try {
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute($bindings);
 
-        $results = $stmt->fetchAll();
-        $this->status_message = $stmt->errorInfo();
-
-        return $results ? $results : false;
+            $results = $stmt->fetchAll();
+            $this->status_message = $stmt->errorInfo();
+            
+            return $results ? $results : false;
+        } catch (Exception $e) {
+            print_r($e->getMessage());
+            $this->status_message = $stmt->errorInfo();
+            return false;
+        }
     }
 
     
@@ -212,6 +218,25 @@ VALUES(:username, :email, :password, :name)";
             return $kweets;
         }
     }
+
+    /* 
+       #------------------------------------------------------------------ 
+       # Returns $amount kweets from $user
+       # Returns in descending order, i.e. newest first.
+       # If no amount is specified, 5 is used.
+       #------------------------------------------------------------------ 
+     */
+    public function getKweetsFrom($user, $amount = 5)
+    {
+        $user_id = $user["id"];
+        $bindings = array(
+            "user_id" => $user_id
+        );
+        $query_string = "SELECT * FROM posts WHERE user_id = :user_id ORDER BY id DESC LIMIT $amount";
+        $result = $this->query_db($query_string, $bindings);
+        return $result;
+    }
+    
 }
 
 // --------------- TESTING BELOW: ----------------- //
